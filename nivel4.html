@@ -37,7 +37,7 @@
     button:hover {
       background-color: #f48fb1;
     }
-    #nextLevelBtn {
+    #finalizeBtn {
       margin-top: 30px;
       display: none;
       background-color: #8e24aa;
@@ -100,7 +100,7 @@
     <button onclick="checkAnswer(this, false)">Ecografía pélvica</button>
   </div>
 
-  <button id="nextLevelBtn" onclick="goToNextLevel()">Ir al siguiente nivel</button>
+  <button id="finalizeBtn" onclick="finalizeGame()">Finalizar Juego</button>
 
   <script>
     let correctAnswers = 0;
@@ -118,7 +118,7 @@
       }
       disableButtons(button.parentElement);
       if (correctAnswers === totalQuestions) {
-        document.getElementById('nextLevelBtn').style.display = 'block';
+        document.getElementById('finalizeBtn').style.display = 'block';
       }
     }
 
@@ -127,8 +127,8 @@
       buttons.forEach(btn => btn.disabled = true);
     }
 
-    function goToNextLevel() {
-      window.location.href = 'nivel5.html';
+    function finalizeGame() {
+      window.location.href = 'felicitaciones.html'; // Redirige a la página de felicitaciones
     }
   </script>
 
