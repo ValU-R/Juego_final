@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nivel 3 - Enfermedades del Útero</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffeb3b;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #f57f17;
+    }
+    .question-card {
+      background: white;
+      border: 2px solid #f57f17;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffcc80;
+      font-size: 16px;
+      cursor: pointer;
+      width: 80%;
+    }
+    button:hover {
+      background-color: #ffb74d;
+    }
+    #nextLevelBtn {
+      margin-top: 30px;
+      display: none;
+      background-color: #f57f17;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nivel 3: Enfermedades del Útero</h1>
+
+  <div class="question-card">
+    <p><strong>¿Qué es la endometriosis?</strong></p>
+    <button onclick="checkAnswer(this, true)">Crecimiento anormal de tejido endometrial fuera del útero</button>
+    <button onclick="checkAnswer(this, false)">Inflamación del cuello uterino</button>
+    <button onclick="checkAnswer(this, false)">Presencia de quistes en los ovarios</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué síntoma es común en la fibromatosis uterina?</strong></p>
+    <button onclick="checkAnswer(this, true)">Sangrado menstrual abundante</button>
+    <button onclick="checkAnswer(this, false)">Dolor durante la ovulación</button>
+    <button onclick="checkAnswer(this, false)">Dolor pélvico crónico</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál es una de las principales causas del cáncer de cuello uterino?</strong></p>
+    <button onclick="checkAnswer(this, true)">Infección persistente por el VPH</button>
+    <button onclick="checkAnswer(this, false)">Uso prolongado de anticonceptivos orales</button>
+    <button onclick="checkAnswer(this, false)">Dieta pobre en fibra</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál de estos factores aumenta el riesgo de desarrollar cáncer endometrial?</strong></p>
+    <button onclick="checkAnswer(this, true)">Obesidad y diabetes tipo 2</button>
+    <button onclick="checkAnswer(this, false)">Ejercicio físico regular</button>
+    <button onclick="checkAnswer(this, false)">Uso de anticonceptivos orales</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué es el síndrome de ovario poliquístico?</strong></p>
+    <button onclick="checkAnswer(this, false)">Una enfermedad que afecta solo a los ovarios</button>
+    <button onclick="checkAnswer(this, true)">Un trastorno hormonal que puede afectar la ovulación</button>
+    <button onclick="checkAnswer(this, false)">Una infección que afecta el cuello uterino</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál es el principal tratamiento para la endometriosis?</strong></p>
+    <button onclick="checkAnswer(this, true)">Medicamentos hormonales o cirugía</button>
+    <button onclick="checkAnswer(this, false)">Solo antibióticos</button>
+    <button onclick="checkAnswer(this, false)">Cambio en la dieta alimentaria</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué prueba se recomienda para detectar el cáncer de cuello uterino en mujeres mayores de 21 años?</strong></p>
+    <button onclick="checkAnswer(this, true)">Papanicolaou</button>
+    <button onclick="checkAnswer(this, false)">Ecografía pélvica</button>
+    <button onclick="checkAnswer(this, false)">Tomografía computarizada</button>
+  </div>
+
+  <button id="nextLevelBtn" onclick="goToNextLevel()">Ir al siguiente nivel</button>
+
+  <script>
+    let correctAnswers = 0;
+    const totalQuestions = 7;
+
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.style.backgroundColor = '#81c784'; // verde
+        correctAnswers++;
+      } else {
+        button.style.backgroundColor = '#e57373'; // rojo
+        setTimeout(() => {
+          window.location.href = 'has_perdido.html'; // pierde si se equivoca
+        }, 1000);
+      }
+      disableButtons(button.parentElement);
+      if (correctAnswers === totalQuestions) {
+        document.getElementById('nextLevelBtn').style.display = 'block';
+      }
+    }
+
+    function disableButtons(card) {
+      const buttons = card.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    function goToNextLevel() {
+      window.location.href = 'nivel4.html';
+    }
+  </script>
+
+</body>
+</html>

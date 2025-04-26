@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nivel 1 - Anatomía del Útero</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe4f2;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #c2185b;
+    }
+    .question-card {
+      background: white;
+      border: 2px solid #f48fb1;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f8bbd0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 80%;
+    }
+    button:hover {
+      background-color: #f48fb1;
+    }
+    #nextLevelBtn {
+      margin-top: 30px;
+      display: none;
+      background-color: #c2185b;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nivel 1: Anatomía del Útero</h1>
+
+  <div class="question-card">
+    <p><strong>¿Qué parte conecta el útero con la vagina?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cérvix</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cómo se llama la capa interna del útero?</strong></p>
+    <button onclick="checkAnswer(this, true)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Cérvix</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál es la función del útero?</strong></p>
+    <button onclick="checkAnswer(this, true)">Albergar y nutrir al feto</button>
+    <button onclick="checkAnswer(this, false)">Producir hormonas</button>
+    <button onclick="checkAnswer(this, false)">Filtrar sangre</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué órgano produce los óvulos?</strong></p>
+    <button onclick="checkAnswer(this, false)">Útero</button>
+    <button onclick="checkAnswer(this, true)">Ovarios</button>
+    <button onclick="checkAnswer(this, false)">Cérvix</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué parte del útero se encuentra en contacto con la cavidad vaginal?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cérvix</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cómo se llama la capa muscular del útero?</strong></p>
+    <button onclick="checkAnswer(this, true)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Cérvix</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué hormona es responsable del ciclo menstrual?</strong></p>
+    <button onclick="checkAnswer(this, false)">Testosterona</button>
+    <button onclick="checkAnswer(this, false)">Insulina</button>
+    <button onclick="checkAnswer(this, true)">Estrógeno</button>
+  </div>
+
+  <button id="nextLevelBtn" onclick="goToNextLevel()">Ir al siguiente nivel</button>
+
+  <script>
+    let correctAnswers = 0;
+    const totalQuestions = 7; // número de preguntas reales
+
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.style.backgroundColor = '#81c784'; // verde
+        correctAnswers++;
+      } else {
+        button.style.backgroundColor = '#e57373'; // rojo
+        setTimeout(() => {
+          window.location.href = 'has_perdido.html'; // pierde si se equivoca
+        }, 1000);
+      }
+      disableButtons(button.parentElement);
+      if (correctAnswers === totalQuestions) {
+        document.getElementById('nextLevelBtn').style.display = 'block';
+      }
+    }
+
+    function disableButtons(card) {
+      const buttons = card.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    function goToNextLevel() {
+      window.location.href = 'nivel2.html';
+    }
+  </script>
+
+</body>
+</html>

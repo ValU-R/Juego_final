@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nivel 2 - Fisiología del Útero</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e1bee7;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #7b1fa2;
+    }
+    .question-card {
+      background: white;
+      border: 2px solid #ba68c8;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f8bbd0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 80%;
+    }
+    button:hover {
+      background-color: #f48fb1;
+    }
+    #nextLevelBtn {
+      margin-top: 30px;
+      display: none;
+      background-color: #7b1fa2;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Nivel 2: Fisiología del Útero</h1>
+
+  <div class="question-card">
+    <p><strong>¿En qué fase del ciclo menstrual ocurre la ovulación?</strong></p>
+    <button onclick="checkAnswer(this, true)">Fase folicular</button>
+    <button onclick="checkAnswer(this, false)">Fase luteínica</button>
+    <button onclick="checkAnswer(this, false)">Fase menstruales</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál es la principal función de la progesterona en el ciclo menstrual?</strong></p>
+    <button onclick="checkAnswer(this, true)">Preparar el útero para la implantación</button>
+    <button onclick="checkAnswer(this, false)">Estimular la ovulación</button>
+    <button onclick="checkAnswer(this, false)">Acelerar el ciclo menstrual</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué hormona produce el cuerpo lúteo después de la ovulación?</strong></p>
+    <button onclick="checkAnswer(this, true)">Progesterona</button>
+    <button onclick="checkAnswer(this, false)">Estrógeno</button>
+    <button onclick="checkAnswer(this, false)">Testosterona</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué sucede si no hay embarazo después de la ovulación?</strong></p>
+    <button onclick="checkAnswer(this, true)">El cuerpo lúteo se degenera y comienza la menstruación</button>
+    <button onclick="checkAnswer(this, false)">Se libera una nueva ovulación</button>
+    <button onclick="checkAnswer(this, false)">Se mantiene el útero preparado para embarazo</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué hormona está involucrada en la liberación de óvulos del ovario?</strong></p>
+    <button onclick="checkAnswer(this, true)">Hormona luteinizante (LH)</button>
+    <button onclick="checkAnswer(this, false)">Estrógeno</button>
+    <button onclick="checkAnswer(this, false)">Prolactina</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Cuál es la duración promedio del ciclo menstrual?</strong></p>
+    <button onclick="checkAnswer(this, false)">15 días</button>
+    <button onclick="checkAnswer(this, false)">30 días</button>
+    <button onclick="checkAnswer(this, true)">28 días</button>
+  </div>
+
+  <div class="question-card">
+    <p><strong>¿Qué es el endometrio?</strong></p>
+    <button onclick="checkAnswer(this, true)">La capa interna del útero</button>
+    <button onclick="checkAnswer(this, false)">El tejido que recubre el ovario</button>
+    <button onclick="checkAnswer(this, false)">La capa muscular del útero</button>
+  </div>
+
+  <button id="nextLevelBtn" onclick="goToNextLevel()">Ir al siguiente nivel</button>
+
+  <script>
+    let correctAnswers = 0;
+    const totalQuestions = 7;
+
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.style.backgroundColor = '#81c784'; // verde
+        correctAnswers++;
+      } else {
+        button.style.backgroundColor = '#e57373'; // rojo
+        setTimeout(() => {
+          window.location.href = 'has_perdido.html'; // pierde si se equivoca
+        }, 1000);
+      }
+      disableButtons(button.parentElement);
+      if (correctAnswers === totalQuestions) {
+        document.getElementById('nextLevelBtn').style.display = 'block';
+      }
+    }
+
+    function disableButtons(card) {
+      const buttons = card.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    function goToNextLevel() {
+      window.location.href = 'nivel3.html';
+    }
+  </script>
+
+</body>
+</html>
